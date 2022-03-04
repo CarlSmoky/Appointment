@@ -1,11 +1,26 @@
+import { useState, useEffect, useCallback} from 'react';
 import { BiCalendar} from "react-icons/bi"
 import AddAppointments from "./components/AddAppointments";
 import { AppoinmentInfo } from "./components/AppointmentInfo";
 import { Search } from "./components/Search";
-import appointmentList from "./data.json";
+
 
 
 function App() {
+
+  let [appointmentList, setAppointmentList] = useState([]);
+  const fetchData = useCallback(() => {
+    fetch('./data.json')
+      .then(res => res.json())
+      .then(data => {
+        setAppointmentList(data)
+      });
+  }, [])
+
+useEffect(() => {
+  fetchData()
+}, [fetchData]);
+
   return (
     <div className="App container mx-auto mt-3 font-thin">
       <h1 className="text-5xl" mb-3>
@@ -17,6 +32,10 @@ function App() {
           <AppoinmentInfo 
             key={appointment.id}
             appointment={appointment}
+            onDeleteAppointment={
+              appointmentId =>
+                setAppointmentList(appointmentList.filter(appointment => appointment.id !== appointmentId))
+            }
           />
         ))
         }
