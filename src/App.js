@@ -7,8 +7,19 @@ import { Search } from "./components/Search";
 
 
 function App() {
-
   let [appointmentList, setAppointmentList] = useState([]);
+  let [query, setQuery] =useState('');
+
+  const filteredAppointments = appointmentList.filter(
+    item => {
+      return (
+        item.petName.toLowerCase().includes(query.toLocaleLowerCase()) ||
+        item.ownerName.toLowerCase().includes(query.toLocaleLowerCase()) ||
+        item.aptNotes.toLowerCase().includes(query.toLocaleLowerCase())
+      )
+    }
+  )
+  
   const fetchData = useCallback(() => {
     fetch('./data.json')
       .then(res => res.json())
@@ -21,14 +32,19 @@ useEffect(() => {
   fetchData()
 }, [fetchData]);
 
+
+
   return (
     <div className="App container mx-auto mt-3 font-thin">
       <h1 className="text-5xl" mb-3>
         <BiCalendar className="inline-block text-red-300 align-top" /> My Appointment</h1>
       <AddAppointments />
-      <Search />
+      <Search
+        query={query}
+        onQueryChange={myQuery => setQuery(myQuery)}
+      />
       <ul className="divide-y divide_gray-200">
-        {appointmentList.map(appointment => (
+        {filteredAppointments.map(appointment => (
           <AppoinmentInfo 
             key={appointment.id}
             appointment={appointment}
