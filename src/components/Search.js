@@ -32,7 +32,7 @@ const DropDown = ({ toggle, sortBy, onSortByChange, orderBy, onOrderByChange }) 
 };
 
 
-export const Search = ({query, onQueryChange, sortBy, onSortByChange, orderBy, onOrderByChange}) => {
+export const Search = ({ query, onQueryChange, sortBy, onSortByChange, orderBy, onOrderByChange }) => {
   let [toggleSort, setToggleSort] = useState(false)
 
   return (
@@ -48,7 +48,7 @@ export const Search = ({query, onQueryChange, sortBy, onSortByChange, orderBy, o
           id="query"
           value={query}
           onChange={(event) => {onQueryChange(event.target.value)}}
-          className="pl-8 rounded-md focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300"
+          className="pl-8 rounded-md focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-400 h-10"
           placeholder="Search"
         />
         <div className="absolute inset-y-0 right-0 flex items-center">
