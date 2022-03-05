@@ -45,12 +45,14 @@ useEffect(() => {
 
 
   return (
-    <div className="App container mx-auto mt-3 font-thin">
-      <h1 className="text-5xl" mb-3>
-        <BiCalendar className="inline-block text-red-300 align-top" /> My Appointment</h1>
+    <div className="App container mx-auto mt-3 font-thin ">
+      <h1 className="text-5xl pb-5" mb-3>
+        <BiCalendar className=" inline-block text-emerald-800/70 align-top" />
+        My Appointment
+      </h1>
       <AddAppointments
-      onSendAppointment={myAppointment => setAppointmentList([...appointmentList, myAppointment])}
-      lastId={appointmentList.reduce((max, item) => Number(item.id) > max ? Number(item.id): max, 0)}
+        onSendAppointment={myAppointment => setAppointmentList([...appointmentList, myAppointment])}
+        lastId={appointmentList.reduce((max, item) => Number(item.id) > max ? Number(item.id): max, 0)}
       />
       <Search
         query={query}
