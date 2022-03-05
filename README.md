@@ -1,5 +1,5 @@
 # Appointment
-Appointment is an single-page application (SPA) with React and Tailwind CSS. The main features are deleting records, searching with a filtered array, set up a sort. 
+Appointment is an single-page application (SPA) with React and Tailwind CSS. The main features are adding and deleting records, searching with a filtered array, set up a sort. 
 
 ## Features
 Login | Sign Up | Logout | Search | Comments | Report | Map
